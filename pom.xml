@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ibm.cicsdev</groupId>
+    <artifactId>cics-java-osgi-jdbc</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>CICS osgi JDBC Application</name>
+    <description>Sample OSGi application demonstrating how to access a Db2 database from a OSGi CICS program.</description>
+    <url>https://github.com/cicsdev/cics-java-osgi-jdbc/</url>
+
+    <modules>
+        <module>cics-java-osgi-jdbc-app</module>
+        <module>cics-java-osgi-jdbc-bundle</module>
+    </modules>
+
+    <licenses>
+        <license>
+            <name>Apache-2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>IBM CICS Transaction Server for z/OS</name>
+            <url>https://www.ibm.com/products/cics-transaction-server</url>
+        </developer>
+    </developers>
+
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>com.ibm.cics</groupId>
+          <artifactId>com.ibm.cics.ts.bom</artifactId>
+          <version>5.5-20200519131930-PH25409</version>
+          <scope>import</scope>
+          <type>pom</type>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
+
+    <properties>
+        <!-- CICS bundle properties -->
+        <cics.jvmserver>DFHOSGI</cics.jvmserver>
+        <java.version>8</java.version>
+
+        <!-- Java project properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.ibm.cics</groupId>
+                    <artifactId>cics-bundle-maven-plugin</artifactId>
+                    <version>1.0.3</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <defaultjvmserver>${cics.jvmserver}</defaultjvmserver>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
+    compileOnly 'com.ibm.cics:com.ibm.cics.server'
+}
+
+description = 'CICS OSGi JDBC application - OSGi bundle'
+
+jar {
+    manifest {
+        from "src/main/resources/META-INF/MANIFEST.MF"
+    }
+}

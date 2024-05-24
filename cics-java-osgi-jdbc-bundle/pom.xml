@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.ibm.cicsdev</groupId>
+    <artifactId>cics-java-osgi-jdbc</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <name>CICS OSGi JDBC application - CICS bundle</name>
+
+  <artifactId>cics-java-osgi-jdbc-bundle</artifactId>
+  <packaging>cics-bundle</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>cics-java-osgi-jdbc-app</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.ibm.cics</groupId>
+        <artifactId>cics-bundle-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

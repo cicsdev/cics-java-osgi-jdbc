@@ -1,0 +1,3 @@
+rootProject.name = 'cics-java-osgi-link'
+include(':cics-java-osgi-jdbc-bundle')
+include(':cics-java-osgi-jdbc-app')

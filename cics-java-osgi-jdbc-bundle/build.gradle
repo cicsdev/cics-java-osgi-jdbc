@@ -1,0 +1,15 @@
+plugins {
+    id 'com.ibm.cics.bundle' version "1.0.5"
+}
+
+dependencies {
+    cicsBundlePart project(path: ':cics-java-osgi-jdbc-app', configuration: 'archives')
+}
+
+cicsBundle {
+    build {
+        defaultJVMServer = "DFHOSGI"
+    }
+}
+
+description = 'CICS OSGi JDBC application - CICS bundle'
