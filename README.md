@@ -111,14 +111,6 @@ JODB
 000140      HEATHER        NICHOLLS    28420.00                                 
 000150        BRUCE         ADAMSON    25280.00                                 
 000160    ELIZABETH          PIANKA    22250.00                                 
-000170    MASATOSHI       YOSHIMURA    24680.00                                 
-000180      MARILYN        SCOUTTEN    21340.00                                 
-000190        JAMES          WALKER    20450.00                                 
-000200        DAVID           BROWN    27740.00                                 
-000210      WILLIAM           JONES    18270.00                                 
-000220     JENNIFER            LUTZ    29840.00                                 
-000230        JAMES       JEFFERSON    22180.00                                 
-000240    SALVATORE          MARINO    28760.00                                 
 ```
 
 The actual contents will be based on the values in the `EMP` table in the database.
