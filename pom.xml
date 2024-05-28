@@ -38,7 +38,7 @@
         <dependency>
           <groupId>com.ibm.cics</groupId>
           <artifactId>com.ibm.cics.ts.bom</artifactId>
-          <version>5.5-20200519131930-PH25409</version>
+          <version>6.1-20220617120000</version>
           <scope>import</scope>
           <type>pom</type>
         </dependency>
@@ -59,6 +59,20 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.13.0</version>
+                    <configuration>
+                        <annotationProcessorPaths>
+                            <annotationProcessorPath>
+                                <groupId>com.ibm.cics</groupId>
+                                <artifactId>com.ibm.cics.server.invocation</artifactId>
+                                <version>6.1</version>
+                            </annotationProcessorPath>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>com.ibm.cics</groupId>
                     <artifactId>cics-bundle-maven-plugin</artifactId>

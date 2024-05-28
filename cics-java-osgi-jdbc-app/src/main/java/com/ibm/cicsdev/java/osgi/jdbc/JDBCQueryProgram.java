@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.ibm.cics.server.Task;
 import com.ibm.cics.server.Terminal;
+import com.ibm.cics.server.invocation.CICSProgram;
 import com.ibm.cicsdev.java.osgi.jdbc.data.Employee;
 
 /**
@@ -60,25 +61,13 @@ public class JDBCQueryProgram
         return conn;
     }
 
-    /**
-     * Entry point of the CICS program.
-     * 
-     * @param args
-     *            Unused
-     * @throws SQLException
-     *             If Db2 interaction fails.
-     */
-    public static void main(String[] args) throws SQLException
-    {
-        // Create the channel and container.
-        Task task = Task.getTask();
-
-        JDBCQueryProgram app = new JDBCQueryProgram(task);
-        app.run();
-    }
-
     /** The current CICS task */
     private final Task task;
+
+    public JDBCQueryProgram()
+    {
+        this(Task.getTask());
+    }
 
     /**
      * Creates a new instance of the JDBC query program.
@@ -110,6 +99,7 @@ public class JDBCQueryProgram
      * 
      * @throws SQLException
      */
+    @CICSProgram("CDEVJODB")
     public void run() throws SQLException
     {
         // Query the database for the employees
@@ -119,7 +109,7 @@ public class JDBCQueryProgram
         boolean isTerminal = principalFacility != null && principalFacility instanceof Terminal;
 
         // Print the employees in tabular format to the terminal.
-        try (PrintWriter out = task.out)
+        try (PrintWriter out = task.getOut())
         {
             out.println();
 
