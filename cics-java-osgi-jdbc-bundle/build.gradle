@@ -1,5 +1,5 @@
 plugins {
-    id 'com.ibm.cics.bundle' version "1.0.5"
+    id 'com.ibm.cics.bundle' version "1.0.7"
 }
 
 dependencies {
@@ -8,7 +8,7 @@ dependencies {
 
 cicsBundle {
     build {
-        defaultJVMServer = "DFHOSGI"
+        defaultJVMServer = project.findProperty("cics.jvmserver") ?: "DFHOSGI"
     }
 }
 
