@@ -56,19 +56,4 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>com.ibm.cics</groupId>
-                    <artifactId>cics-bundle-maven-plugin</artifactId>
-                    <version>1.0.3</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <defaultjvmserver>${cics.jvmserver}</defaultjvmserver>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>
