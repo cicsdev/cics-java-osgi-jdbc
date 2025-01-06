@@ -19,7 +19,7 @@ On the command line, you simply swap the Gradle or Maven command for the wrapper
 
 For an IDE, taking Eclipse as an example, the plug-ins for Gradle *buildship* and Maven *m2e* will integrate with the "Run As..." capability, allowing you to specify whether you want to build the project with a Wrapper, or a specific version of your chosen build tool.
 
-The required build-tasks are typically `clean assemble` for Gradle and `clean package` for Maven. Once run, Gradle will generate a JAR file in the `build/libs` directory, while Maven will generate it in the `target` directory.
+The required build-tasks are typically `clean build` for Gradle and `clean verify` for Maven. Once run, Gradle will generate a JAR file in the `build/libs` directory, while Maven will generate it in the `target` directory.
 
 **Note:** If you import the project to your IDE, you might experience local project compile errors. To resolve these errors you should run a tooling refresh on that project.
 For example, in Eclipse: 
@@ -34,12 +34,12 @@ Run the following in a local command prompt:
 On Linux or Mac:
 
 ```shell
-./gradlew clean assemble
+./gradlew clean build
 ```
 On Windows:
 
 ```shell
-gradlew.bat clean assemble
+gradlew.bat clean build
 ```
 
 This creates a JAR file in the `build/libs` directory.
@@ -50,13 +50,13 @@ Run the following in a local command prompt:
 On Linux or Mac:
 
 ```shell
-./mvnw clean package
+./mvnw clean verify
 ```
 
 On Windows:
 
 ```shell
-mvnw.cmd clean package
+mvnw.cmd clean verify
 ```
 
 This creates a JAR file in the `target` directory.
