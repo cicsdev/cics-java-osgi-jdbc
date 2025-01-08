@@ -13,7 +13,7 @@ The application makes use of the employee sample table supplied with Db2 for z/O
 * Either Gradle or Apache Maven on the workstation (optional if using Wrappers)
 
 ## Building
-You can build the sample using an IDE of your choice, or you can build it from the command line. For both approaches, using the supplied Gradle or Maven wrapper is the will give a consistent version of build tooling.
+You can build the sample using an IDE of your choice, or you can build it from the command line. For both approaches, using the supplied Gradle or Maven wrappers will give a consistent version of build tooling.
 
 For an IDE, taking Eclipse as an example, the plug-ins for Gradle *buildship* and Maven *m2e* will integrate with the "Run As..." capability, allowing you to specify whether you want to build the project with a Wrapper, or a specific version of your chosen build tool.
 
