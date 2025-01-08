@@ -13,13 +13,9 @@ The application makes use of the employee sample table supplied with Db2 for z/O
 * Either Gradle or Apache Maven on the workstation (optional if using Wrappers)
 
 ## Building
-You can build the sample using an IDE of your choice, or you can build it from the command line. For both approaches, using the supplied Gradle or Maven wrapper is the recommended way to get a consistent version of build tooling.
-
-On the command line, you simply swap the Gradle or Maven command for the wrapper equivalent, `gradlew` or `mvnw` respectively.
+You can build the sample using an IDE of your choice, or you can build it from the command line. For both approaches, using the supplied Gradle or Maven wrappers will give a consistent version of build tooling.
 
 For an IDE, taking Eclipse as an example, the plug-ins for Gradle *buildship* and Maven *m2e* will integrate with the "Run As..." capability, allowing you to specify whether you want to build the project with a Wrapper, or a specific version of your chosen build tool.
-
-The required build-tasks are typically `clean build` for Gradle and `clean verify` for Maven. Once run, Gradle will generate a JAR file in the `build/libs` directory, while Maven will generate it in the `target` directory.
 
 **Note:** If you import the project to your IDE, you might experience local project compile errors. To resolve these errors you should run a tooling refresh on that project.
 For example, in Eclipse: 
@@ -28,38 +24,31 @@ For example, in Eclipse:
 
 > Tip: *In Eclipse, Gradle (buildship) is able to fully refresh and resolve the local classpath even if the project was previously updated by Maven. However, Maven (m2e) does not currently reciprocate that capability. If you previously refreshed the project with Gradle, you'll need to manually remove the 'Project Dependencies' entry on the Java build-path of your Project Properties to avoid duplication errors when performing a Maven Project Update.*
 
-#### Gradle Wrapper (command line)
-Run the following in a local command prompt:
+### Building with Gradle
 
-On Linux or Mac:
+A JAR file is created inside the `cics-java-osgi-jdbc-app/build/libs` directory and a CICS bundle ZIP file inside the `cics-java-osgi-jdbc-bundle/build/distributions` directory.
 
-```shell
-./gradlew clean build
-```
-On Windows:
+If using the CICS bundle ZIP, the CICS JVM server name should be modified in the  `cics.jvmserver` property in the gradle build [cics-java-osgi-jdbc-bundle/build.gradle](cics-java-osgi-jdbc-bundle/build.gradle) to match the required CICS JVMSERVER resource name, or alternatively can be set on the command line.
 
-```shell
-gradlew.bat clean build
-```
+| Tool | Command |
+| ----------- | ----------- |
+| Gradle Wrapper (Linux/Mac) | ```./gradlew clean build``` |
+| Gradle Wrapper (Windows) | ```gradle.bat clean build``` |
+| Gradle (command-line) | ```gradle clean build``` |
+| Gradle (command-line & setting jvmserver) | ```gradle clean build -Pcics.jvmserver=MYJVM``` |
 
-This creates a JAR file in the `build/libs` directory.
+### Building with Apache Maven
 
-#### Maven Wrapper (command line)
-Run the following in a local command prompt:
+A JAR file is created inside the `cics-java-osgi-jdbc-app/target` directory and a CICS bundle ZIP file inside the `cics-java-osgi-jdbc-bundle/target` directory.
 
-On Linux or Mac:
+If building a CICS bundle ZIP the CICS bundle plugin bundle-war goal is driven using the maven verify phase. The CICS JVM server name should be modified in the `<cics.jvmserver>` property in the [`pom.xml`](pom.xml) to match the required CICS JVMSERVER resource name, or alternatively can be set on the command line.
 
-```shell
-./mvnw clean verify
-```
-
-On Windows:
-
-```shell
-mvnw.cmd clean verify
-```
-
-This creates a JAR file in the `target` directory.
+| Tool | Command |
+| ----------- | ----------- |
+| Maven Wrapper (Linux/Mac) | ```./mvnw clean verify``` |
+| Maven Wrapper (Windows) | ```mvnw.cmd clean verify``` |
+| Maven (command-line) | ```mvn clean verify``` |
+| Maven (command-line & setting jvmserver) | ```mvn clean verify -Dcics.jvmserver=MYJVM``` |
 
 ## Deploying
 Configure the JVM profile of the OSGi JVM server to include the Db2 driver JARs in the `OSGI_BUNDLES` environment variable and the Db2 library in the `LIBRARY_SUFFIX` environment variable. For more information, see the provided [JVM profile template](etc/jvmprofiles/DFHOSGI.jvmprofile). If necessary, restart the JVM server.
