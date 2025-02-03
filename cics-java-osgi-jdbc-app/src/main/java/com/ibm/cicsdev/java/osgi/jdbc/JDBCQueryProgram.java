@@ -1,3 +1,6 @@
+/**
+ * Copyright IBM Corp. 2025
+ */
 package com.ibm.cicsdev.java.osgi.jdbc;
 
 import java.io.PrintWriter;
