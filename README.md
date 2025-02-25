@@ -1,6 +1,8 @@
 # CICS OSGi Java database connectivity (JDBC) application
 
-TODO
+This sample demonstrates an OSGi JDBC application integrated with IBM CICS that can be deployed to a CICS OSGi JVM server.
+
+The application makes use of the employee sample table supplied with Db2 for z/OS. The application allows you to display employee information from the table EMP. The sample also provides a set of Gradle and Maven build files for use either in Eclipse or standalone build environments.
 
 ## Versions
 | CICS TS for z/OS Version | Branch                                 | Minimum Java Version | Build Status |
