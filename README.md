@@ -4,8 +4,8 @@ This sample demonstrates an OSGi JDBC application integrated with IBM CICS that 
 The application makes use of the employee sample table supplied with Db2 for z/OS. The application allows you to display employee information from the table EMP. The sample also provides a set of Gradle and Maven build files for use either in Eclipse or standalone build environments.
 
 ## Requirements
-* CICS TS V5.5 or later
-* A connected CICS DB2CONN resource. For more information, see [Deploying](#deploying)
+* CICS TS V6.1 or later
+* A connected CICS DB2CONN resource. For more information, see [DB2CONN](#cics-db2conn-connection)
 * An OSGi JVM server
 * Java SE 1.8 or later on the workstation
 * IBM Db2 V11 or later on z/OS
