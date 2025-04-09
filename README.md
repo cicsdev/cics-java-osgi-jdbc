@@ -70,10 +70,60 @@ mvn clean verify
 mvn clean verify -Dcics.jvmserver=MYJVM
 ```
 
-## Deploying
-Configure the JVM profile of the OSGi JVM server to include the Db2 driver JARs in the `OSGI_BUNDLES` environment variable and the Db2 library in the `LIBRARY_SUFFIX` environment variable. For more information, see the provided [JVM profile template](etc/jvmprofiles/DFHOSGI.jvmprofile). If necessary, restart the JVM server.
+## Deploying to CICS
+### Configure CICS JCL
+To allow your CICS region to connect to DB2, we need to add some configuration to the JCL.
 
-Ensure a CICS DB2CONN is installed and connected.
+```
+//  SET DB2=V12                           - DB2 Version
+...
+<variables>
+...
+DB2CONN=YES
+
+//STEPLIB
+...
+//         DD DISP=SHR,DSN=SYS2.DB2.&DB2..SDSNLOAD
+//         DD DISP=SHR,DSN=SYS2.DB2.&DB2..SDSNLOD2
+//         DD DISP=SHR,DSN=DSN&DB2.P2.RUNLIB.LOAD
+```
+
+### Configure the JVM Profile
+Configure the JVM profile of the OSGi JVM server to include the Db2 driver JARs in the `OSGI_BUNDLES` environment variable and the Db2 library in the `LIBRARY_SUFFIX` environment variable. 
+
+```
+DB2_PATH=/usr/lpp/db2v12
+OSGI_BUNDLES=&DB2_PATH;/jdbc/classes/db2jcc4.jar,\
+             &DB2_PATH;/jdbc/classes/db2jcc_license_cisuz.jar
+LIBPATH_SUFFIX=&DB2_PATH;/jdbc/lib
+```
+>Note: This example is using db2v12, this version must be consistent to the version set in your JCL.
+
+As an example, see the provided [JVM profile template](etc/jvmprofiles/DFHOSGI.jvmprofile). If necessary, restart the JVM server.
+
+---
+
+### CICS DB2CONN Connection
+
+Ensure a CICS DB2CONN is installed and connected. 
+
+```
+CEDA DEFINE DB2CONN(JODBCONN) GROUP(CDEVJODB)
+```
+```
+CEDA INSTALL DB2CONN(CDEVJODB) GROUP(CDEVJODB)
+```
+
+### CICS DB2CONN Connection with CICS Explorer
+1. Definitions > Db2 > Db2 Connection Definitions
+2. Right-click > New...
+3. Fill in the Name and Group with `CDEVJODB`
+4. Right-click and install the new definition
+5. Ensure it is CONNECTED
+
+> Note: The DB2ID differs between DB2 versions and the system you are running your CICS region on. For example, DB2V12 on plex2c, the DB2ID would be DK2C.
+
+---
 
 ### Deploying using command line tools
 1. Upload the built CICS bundle ZIP file from your *projects/cics-java-osgi-jdbc-bundle/target* or *projects/cics-java-osgi-jdbc-bundle/build/distributions* directory to z/FS on the host system (e.g. FTP).
@@ -91,12 +141,28 @@ Ensure a CICS DB2CONN is installed and connected.
 2. Create a new OSGi bundlepart that references the JAR file. 
 3. Deploy the CICS bundle project from CICS Explorer using the **Export Bundle Project to z/OS UNIX File System** wizard.
 
+### Deploying using CICS Explorer and CICS Bundle ZIP
+1. Connect to USS on the host system (e.g. SSH).
+2. Create the bundle directory for the project.
+3. Copy & paste the built CICS bundle ZIP file from your *projects/cics-java-osgi-jdbc-bundle/target* or *projects/cics-java-osgi-jdbc-bundle/build/distributions* directory to z/FS on the host system into the bundle directory.
+4. Extract ther ZIP by right-clicking on the ZIP file > User Action > unjar...
+5. Refresh the bundle directory
+
+---
+
 ### Installing the bundle
 1. Create a new bundle definition, setting the bundle directory to the deployed bundle directory:
    ```
-   BUNDLE(CDEVJODB) GROUP(CICSDEV) BUNDLEDIR(/path/to/bundle/directory)
+   BUNDLE(CDEVJODB) GROUP(CDEVJODB) BUNDLEDIR(/path/to/bundle/directory)
    ```
 2. Install the bundle
+
+### Installing the bundle with CICS Explorer
+1. Definitions > Bundle Definitions
+2. Right-click > New...
+3. Fill in the Bundle and Group names as `CDEVJODB`
+4. Fill in the Bundle Directory to point to the directory you expanded the ZIP
+5. Install the bundle
 
 ## Running
 To run the sample, run the transaction `JODB`.
@@ -104,22 +170,22 @@ To run the sample, run the transaction `JODB`.
 The terminal should contain contents similar to the following:
 
 ```
-JODB                                                                            
-000001        BILBO         BAGGINS     2004.00                                 
-000010    CHRISTINE            HAAS    52750.00                                 
-000020      MICHAEL        THOMPSON    41250.00                                 
-000030          SAL            KWAN    38250.00                                 
-000050         JOHN           GEYER    40175.00                                 
-000060       IRVING           STERN    32250.00                                 
-000070          EVA         PULASKI    36170.00                                 
-000090       EILEEN       HENDERSON    29750.00                                 
-000100     THEODORE         SPENSER    26150.00                                 
-000110     VINCENZO        LUCCHESI    46500.00                                  
-000120         SEAN       O'CONNELL    29250.00                                 
-000130      DOLORES        QUINTANA    23800.00                                 
-000140      HEATHER        NICHOLLS    28420.00                                 
-000150        BRUCE         ADAMSON    25280.00                                 
-000160    ELIZABETH          PIANKA    22250.00                                 
+JODB                                            
+000001        BILBO         BAGGINS     2004.00 
+000010    CHRISTINE            HAAS       90.00 
+000020      MICHAEL        THOMPSON    41250.00 
+000030          SAL            KWAN    38250.00 
+000050         JOHN           GEYER    40175.00 
+000060       IRVING           STERN    32250.00 
+000070          EVA         PULASKI    36170.00 
+000090       EILEEN       HENDERSON    29750.00 
+000100     THEODORE         SPENSER    26150.00 
+000110     VINCENZO        LUCCHESI    46500.00 
+000111          TES            TEST  1000000.00 
+000120         SEAN       O'CONNELL    29250.00 
+000130      DOLORES        QUINTANA    23800.00 
+000140      HEATHER        NICHOLLS    28420.00 
+000150        BRUCE         ADAMSON    25280.00 
 ```
 
 The actual contents will be based on the values in the `EMP` table in the database.
