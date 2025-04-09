@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: copyright-action
-        uses: cicsdev/.github/.github/actions/samples-copyright-checker@139edd8
+        uses: cicsdev/.github/.github/actions/samples-copyright-checker@139edd8dc23af7f4f7dd9afe4d56a1053fe426a7
         with:
           directory: './cics-java-osgi-jdbc-app/'
           file-extensions: '*.java'
