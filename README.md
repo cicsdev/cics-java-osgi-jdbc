@@ -89,7 +89,9 @@ DB2CONN=YES
 ```
 
 ### Configure the JVM Profile
-Configure the JVM profile of the OSGi JVM server to include the Db2 driver JARs in the `OSGI_BUNDLES` environment variable and the Db2 library in the `LIBRARY_SUFFIX` environment variable. 
+Configure the JVM profile of the OSGi JVM server to include the Db2 driver JARs in the `OSGI_BUNDLES` environment variable and the Db2 library in the `LIBRARY_SUFFIX` environment variable.
+
+> Note: The same of your JVM profile MUST be DFHOSGI
 
 ```
 DB2_PATH=/usr/lpp/db2v12
