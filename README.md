@@ -4,6 +4,8 @@ This sample demonstrates an OSGi JDBC application integrated with IBM CICS that 
 
 The application makes use of the employee sample table supplied with Db2 for z/OS. The application allows you to display employee information from the table EMP. The sample also provides a set of Gradle and Maven build files for use either in Eclipse or standalone build environments.
 
+Branches are provided for both CICS TS V5 and CICS TS V6 highlighting changes in JCICS v2 at CICS TS V6. The V5 branch uses the OSGi CICS-MainClass header to denote the program entry point, and the CICS TS V6 branch uses the new @CICSProgram annotation.
+
 ## Versions
 | CICS TS for z/OS Version | Branch                                 | Minimum Java Version | Build Status |
 |--------------------------|----------------------------------------|----------------------|--------------|
