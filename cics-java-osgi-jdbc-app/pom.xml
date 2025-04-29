@@ -22,21 +22,7 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <annotationProcessorPath>
-                            <groupId>com.ibm.cics</groupId>
-                            <artifactId>com.ibm.cics.server.invocation</artifactId>
-                            <version>6.1</version>
-                        </annotationProcessorPath>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
+        <plugins>            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -44,7 +30,7 @@
                 <configuration>
                     <archive>
                         <manifestFile>META-INF/MANIFEST.MF</manifestFile>
-                    </archive>
+                    </archive>                                	
                 </configuration>
             </plugin>
         </plugins>
