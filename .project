@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>cics-java-osgi-link</name>
+	<name>cics-java-osgi-jdbc</name>
 	<projects>
 	</projects>
 	<buildSpec>
