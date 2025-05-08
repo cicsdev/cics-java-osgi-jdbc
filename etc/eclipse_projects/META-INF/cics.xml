@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<manifest xmlns="http://www.ibm.com/xmlns/prod/cics/bundle" id="cics-java-osgi-jdbc-bundle" bundleMajorVer="1" bundleMinorVer="0" bundleMicroVer="0" bundleVersion="1" bundleRelease="0">
+<manifest xmlns="http://www.ibm.com/xmlns/prod/cics/bundle" id="com.ibm.cics.server.examples.osgi.jdbc.bundle" bundleMajorVer="1" bundleMinorVer="0" bundleMicroVer="0" bundleVersion="1" bundleRelease="0">
     <meta_directives>
         <timestamp>2025-05-07T15:46:32.498Z</timestamp>
     </meta_directives>
