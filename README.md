@@ -6,7 +6,7 @@ This sample demonstrates how to code, build, and deploy a CICS Java OSGi applica
 
 ## Requirements
 * CICS TS V6.1 or later
-* A connected CICS DB2CONN resource. For more information, see [DB2CONN](#configuring)
+* A connected CICS DB2CONN resource. For more information, see [CONFIGURING](#configuring)
 * An OSGi JVM server
 * Java SE 1.8 or later on the workstation
 * IBM Db2 V11 or later on z/OS
