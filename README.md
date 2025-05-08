@@ -1,5 +1,5 @@
 # Sample: cics-java-osgi-jdbc
-[![Build](https://github.com/cicsdev/cics-java-osgi-jdbc/actions/workflows/java.yaml/badge.svg)](https://github.com/cicsdev/cics-java-osgi-jdbc/actions/workflows/java.yaml)
+[![Build](https://github.com/cicsdev/cics-java-osgi-jdbc/actions/workflows/java.yaml/badge.svg?branch=cicsts/v6.1)](https://github.com/cicsdev/cics-java-osgi-jdbc/actions/workflows/java.yaml)
 
 This sample demonstrates how to code, build, and deploy a CICS Java OSGi application that makes JDBC calls to Db2. It makes use of the employee sample table supplied with Db2 for z/OS, and allows you to display employee information from the table EMP.
 
