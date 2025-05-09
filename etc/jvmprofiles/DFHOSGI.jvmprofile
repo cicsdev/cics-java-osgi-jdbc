@@ -28,7 +28,7 @@ WORK_DIR=.
 _BPXK_DISABLE_SHLIB=YES
 
 # Db2 paths
-DB2_PATH=/usr/lpp/db2v12
+DB2_PATH=/usr/lpp/db2v13
 OSGI_BUNDLES=&DB2_PATH;/jdbc/classes/db2jcc4.jar,\
              &DB2_PATH;/jdbc/classes/db2jcc_license_cisuz.jar
 LIBPATH_SUFFIX=&DB2_PATH;/jdbc/lib

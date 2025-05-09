@@ -117,7 +117,7 @@ A JAR file is created inside the `cics-java-osgi-jdbc-app/target` directory and 
 To allow your CICS region to connect to DB2, we need to add some configuration to the JCL.
 
 ```
-//  SET DB2=V12                           - DB2 Version
+//  SET DB2=V13                           - DB2 Version
 ...
 <variables>
 ...
@@ -136,12 +136,12 @@ Configure the JVM profile of the OSGi JVM server to include the Db2 driver JARs 
 > Note: The name of your JVM profile is assumed to be 'DFHOSGI'
 
 ```
-DB2_PATH=/usr/lpp/db2v12
+DB2_PATH=/usr/lpp/db2v13
 OSGI_BUNDLES=&DB2_PATH;/jdbc/classes/db2jcc4.jar,\
              &DB2_PATH;/jdbc/classes/db2jcc_license_cisuz.jar
 LIBPATH_SUFFIX=&DB2_PATH;/jdbc/lib
 ```
-> Note: This example is using db2v12, this version must be consistent to the version set in your JCL.
+> Note: This example is using db2v13, this version must be consistent to the version set in your JCL.
 
 As an example, see the provided [JVM profile template](etc/jvmprofiles/DFHOSGI.jvmprofile). If necessary, restart the JVM server.
 
