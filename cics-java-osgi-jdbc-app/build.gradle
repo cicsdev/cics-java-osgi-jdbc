@@ -1,8 +1,29 @@
-plugins {
+plugins 
+{
     id 'java'
+    id 'eclipse'
 }
 
-dependencies {
+
+java
+{
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+
+// If in Eclipse, add Javadoc to the local project classpath
+eclipse 
+{
+    classpath 
+    {
+        downloadJavadoc = true
+    }
+}
+
+
+dependencies 
+{
     annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:6.1-20220617120000")
     annotationProcessor 'com.ibm.cics:com.ibm.cics.server.invocation'
     compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:6.1-20220617120000")
@@ -11,8 +32,10 @@ dependencies {
 
 description = 'CICS OSGi JDBC application - OSGi bundle'
 
-jar {
-    manifest {
-        from "src/main/resources/META-INF/MANIFEST.MF"
+jar 
+{
+    manifest 
+    {
+        from "META-INF/MANIFEST.MF"
     }
 }
