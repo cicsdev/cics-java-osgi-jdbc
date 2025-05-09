@@ -1,5 +1,22 @@
 plugins {
     id 'java'
+    id 'eclipse'
+}
+
+java
+{
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+
+// If in Eclipse, add Javadoc to the local project classpath
+eclipse 
+{
+    classpath 
+    {
+        downloadJavadoc = true
+    }
 }
 
 dependencies {
@@ -11,6 +28,6 @@ description = 'CICS OSGi JDBC application - OSGi bundle'
 
 jar {
     manifest {
-        from "src/main/resources/META-INF/MANIFEST.MF"
+        from "META-INF/MANIFEST.MF"
     }
 }
