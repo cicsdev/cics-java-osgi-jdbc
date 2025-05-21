@@ -1,5 +1,4 @@
 # cics-java-osgi-jdbc
-[![Build](https://github.com/cicsdev/cics-java-osgi-jdbc/actions/workflows/java.yaml/badge.svg?branch=cicsts/v5.5)](https://github.com/cicsdev/cics-java-osgi-jdbc/actions/workflows/java.yaml)
 
 This sample demonstrates how to code, build, and deploy a CICS Java OSGi application that makes JDBC calls to Db2. It makes use of the employee sample table supplied with Db2 for z/OS, and allows you to display employee information from the table EMP.
 
@@ -125,7 +124,6 @@ DB2CONN=YES
 ...
 //         DD DISP=SHR,DSN=SYS2.DB2.&DB2..SDSNLOAD
 //         DD DISP=SHR,DSN=SYS2.DB2.&DB2..SDSNLOD2
-//         DD DISP=SHR,DSN=DSN&DB2.P2.RUNLIB.LOAD
 ```
 
 ### Configure the JVM Profile
@@ -149,7 +147,7 @@ Ensure a CICS DB2CONN is installed and connected.
 CEDA DEFINE DB2CONN(JODBCONN) GROUP(CDEVJODB)
 ```
 ```
-CEDA INSTALL DB2CONN(CDEVJODB) GROUP(CDEVJODB)
+CEDA INSTALL DB2CONN(JODBCONN) GROUP(CDEVJODB)
 ```
 
 ### Option 2 - Configure the DB2CONN with CICS Explorer
@@ -164,6 +162,8 @@ CEDA INSTALL DB2CONN(CDEVJODB) GROUP(CDEVJODB)
 ---
 
 ## Deploying to CICS
+CICS resource definitions for the bundle, programs, transactions and a JVM server are supplied in a group CDEVJODB as a DFHCSDUP sample input stream supplied in [`DFHCSD.txt`](etc/DFHCSD.txt). Alternatively they can be installed using the bundle parts supplied with the cics-java-osgi-jdbc-bundle project.
+
 ### Option 1 - Deploying using CICS Explorer SDK and the provided CICS bundle project
 1. Deploy the CICS bundle project 'com.ibm.cics.server.examples.osgi.jdbc.bundle' from CICS Explorer using the **Export Bundle Project to z/OS UNIX File System** wizard. This CICS bundle includes the osgi bundlepart, the JODB transaction and the CDEVJODB program to run the sample.
 
@@ -241,7 +241,7 @@ JODB
 The actual contents will be based on the values in the `EMP` table in the database.
 
 ## License
-This project is licensed under [Apache License Version 2.0](LICENSE).
+This project is licensed under [Eclipse Public License - v 2.0](LICENSE).
 
 ## Usage terms
 By downloading, installing, and/or using this sample, you acknowledge that separate license terms may apply to any dependencies that might be required as part of the installation and/or execution and/or automated build of the sample, including the following IBM license terms for relevant IBM components:
