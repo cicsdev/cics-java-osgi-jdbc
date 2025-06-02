@@ -12,7 +12,7 @@
 # Copyright IBM Corp. 2011, 2023                                      #
 #                                                                     #
 #######################################################################
-JAVA_HOME=/usr/lpp/java/J8.0_64/
+JAVA_HOME=/java/java17_64
 WORK_DIR=.
 
 -Xms32M
